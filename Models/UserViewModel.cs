@@ -34,7 +34,7 @@ namespace MVCforFunzies.Models
         public string password { get; set;}
 
         [Required]
-        [Compare("Password", ErrorMessage = "Password and Password Confirmation must match")]
+        [Compare("password", ErrorMessage = "Password and Password Confirmation must match")]
         [Display(Name = "Password Confirmation")]   
         public string passwordConfirmation { get; set;}
 

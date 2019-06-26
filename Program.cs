@@ -19,7 +19,8 @@ namespace MVCforFunzies
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseSetting("https_port", "8080")
+            // .UseSetting("https_port", "5001")
             .UseStartup<Startup>();
     }
 }
+ 

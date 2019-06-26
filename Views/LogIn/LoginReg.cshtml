@@ -6,23 +6,27 @@
 </div>
 <div class="column">
     <h2>Register</h2>
-    <form asp-controller="LoginReg" asp-action="Register" method="post">
+    <form asp-controller="Login" asp-action="Register" method="POST">
         <label asp-for="firstName"></label>
         <input asp-for="firstName"/>
         <span asp-validation-for="firstName"></span><br>
         <label asp-for="lastName"></label>
         <input asp-for="lastName"/>
         <span asp-validation-for="lastName"></span><br>
+        <p>@ViewBag.ExistsError</p>
         <label asp-for="email"></label>
         <input asp-for="email"/>
         <span asp-validation-for="email"></span><br>
         <label asp-for="password"></label>
         <input asp-for="password"/>
         <span asp-validation-for="password"></span><br>
-        <!-- <label asp-for="passwordConfirmation"></label>
+        <label asp-for="passwordConfirmation"></label>
         <input asp-for="passwordConfirmation"/>
-        <span asp-validation-for="passwordConfirmation"></span><br> -->
+        <span asp-validation-for="passwordConfirmation"></span><br>
         <br>
         <input type="submit" value = "Register"/>
     </form>
 </div>
+
+<partial name="Log.cshtml" />
+
