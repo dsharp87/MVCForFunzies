@@ -28,6 +28,11 @@ body {
     margin: 15px;
 }
 
+#productImage {
+    width: 100px;
+    height: 100px;
+}
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */

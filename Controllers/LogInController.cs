@@ -57,7 +57,7 @@ namespace MVCforFunzies.Controllers
                     _context.SaveChanges();
                     User results = _context.Users.SingleOrDefault(user => user.email == formUser.email);
                     HttpContext.Session.SetInt32("loggedId", results.UserId);
-                    return RedirectToAction("OtherPage");
+                    return RedirectToAction("LandingPage","Landing");
                 }
             }
             else
@@ -68,7 +68,7 @@ namespace MVCforFunzies.Controllers
 
         [HttpPost]
         [Route("login")]
-        public IActionResult Login(LogUserViewModel formUser)
+        public IActionResult LogIn(LogUserViewModel formUser)
         {
             User results = _context.Users.SingleOrDefault(u => u.email == formUser.email);
             if(results == null)
@@ -82,28 +82,15 @@ namespace MVCforFunzies.Controllers
                 if(Hasher.VerifyHashedPassword(results, results.password, formUser.password) != 0) 
                 {
                     HttpContext.Session.SetInt32("loggedId", results.UserId);
-                    return RedirectToAction("OtherPage");
+                    return RedirectToAction("LandingPage","Landing");
+                }
+                else
+                {
+                    TempData["error"] = "login information inccorrect. Please try again.";
+                    return RedirectToAction("LoginReg");
                 }
             }
-            return RedirectToAction("OtherPage");
         }
-
-
-        [HttpGet]
-        [Route("other")]
-        public IActionResult OtherPage()
-        {
-            if(HttpContext.Session.GetInt32("loggedId") == null )
-            {
-                return RedirectToAction("LoginReg");
-            }
-            int loggedId = (int)HttpContext.Session.GetInt32("loggedId");
-            User loggedUser = _context.Users.SingleOrDefault(u => u.UserId == loggedId);
-            System.Console.WriteLine(loggedUser.firstName);
-            ViewBag.loggedUser = loggedUser;
-            return View();
-        }
-
 
         [HttpPost]
         [Route("logout")]
@@ -111,6 +98,14 @@ namespace MVCforFunzies.Controllers
         {
             HttpContext.Session.Clear();
             return RedirectToAction("LoginReg");
+        }
+
+        [HttpPost]
+        [Route("autoLog")]
+        public IActionResult AutoLog()
+        {
+            HttpContext.Session.SetInt32("loggedId", 1);
+            return RedirectToAction("LandingPage","Landing");
         }
 
 

@@ -14,6 +14,8 @@ namespace MVCforFunzies.Models
 
         public string description { get; set; }
 
-        public int price { get; set; }
+        public string itemUrl {get; set;}
+
+        public float price { get; set; }
     }
 }

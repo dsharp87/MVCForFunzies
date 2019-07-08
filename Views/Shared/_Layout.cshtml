@@ -22,8 +22,11 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="LogIn" asp-action="LoginReg">LoginReg</a></li>
-                    <li><a asp-area="" asp-controller="Login" asp-action="OtherPage">OtherPage</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Landing" asp-action="LandingPage">LandingPage</a></li>
+                    <li><form asp-controller="LogIn" asp-action="LogOut" method="POST">
+                            <input type="submit" value="LogOut">
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>

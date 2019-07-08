@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="~/css/site.css" />
+@model MVCforFunzies.Models.ProductViewModel
+
+<h1>New Product Page!</h1>
+<h2>@ViewBag.SuccessMessage</h2>
+
+<div>
+    <form asp-controller="Product" asp-action="AddProduct" method="POST">
+        <label asp-for="name"></label>
+        <input asp-for="name"/>
+        <span asp-validation-for="name"></span><br>
+        <label asp-for="description"></label>
+        <input asp-for="description"/>
+        <span asp-validation-for="description"></span><br>
+        <label asp-for="itemUrl"></label>
+        <input asp-for="itemUrl"/>
+        <span asp-validation-for="itemUrl"></span><br>
+        <label asp-for="price"></label>
+        <input asp-for="price"/>
+        <span asp-validation-for="price"></span><br>
+        <input type="submit" value="Add Product"/>
+    </form>
+</div>

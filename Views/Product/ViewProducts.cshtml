@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="~/css/site.css" />
+
+
+@model MVCforFunzies.Models.Product
+<h1>Welcome to View Products Page</h1>
+
+@foreach(var prod in ViewBag.AllProducts)
+{
+    <div>
+        <img id="productImage" src=@prod.itemUrl alt="Invalid Image">
+        <h4>@prod.name</h4>
+        <p>@prod.description</p>
+    </div>
+}
